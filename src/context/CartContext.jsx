@@ -10,14 +10,20 @@ export function CartProvider({ children }) {
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
-  // Function to update the cart and save it to localStorage
+  function removeItem(productId) {
+    const updatedCart = cart.filter((item) => item.id !== productId); // Assuming `id` is unique to each product
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  }
+
+ 
   function cartItem(product) {
     const updatedCart = [...cart, product];
     setCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));  // Save to localStorage
+    localStorage.setItem("cart", JSON.stringify(updatedCart)); 
   }
 
-  // Sync cart changes with localStorage
+ 
   useEffect(() => {
     if (cart.length > 0) {
       localStorage.setItem("cart", JSON.stringify(cart));
@@ -25,7 +31,7 @@ export function CartProvider({ children }) {
   }, [cart]);
 
   return (
-    <CartContext.Provider value={{ cart, cartItem }}>
+    <CartContext.Provider value={{ cart, cartItem,setCart,removeItem }}>
       {children}
     </CartContext.Provider>
   );

@@ -28,8 +28,8 @@ export default function Shop() {
     );
    });
 
-  const categories = ["All", "Shoes", "Miscellaneous"];
-
+  // const categories = ["All", "Shoes", "Miscellaneous"];
+  const categories = [""];
   // // Function to handle category selection
   // const handleCategoryClick = (category) => {
   //   setSelectedCategory(category);

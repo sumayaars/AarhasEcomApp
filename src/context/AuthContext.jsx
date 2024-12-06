@@ -8,7 +8,7 @@ export function AuthProvider({ children }) {
     const [loggedUser, setLoggedUser] = useState(null);
     const [googleUser, setGoogleUser] = useState(null);
     // console.log(userToken);
-    console.log(googleUser);
+    // console.log(googleUser);
    
     async function getUserInfo() {
         if (userToken) {
